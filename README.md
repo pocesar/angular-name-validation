@@ -6,7 +6,9 @@ Angular directive for validating UTF-8 full names on text inputs
 ## Usage
 
 ```js
-angular.module('yourapp', ['nameValidation']);
+angular.module('yourapp', ['nameValidation']).controller('InYourController', ['nameValidation', function(nameValidation){
+  this.valid = nameValidation('\u1920\u8212 \u8211');
+});
 ```
 
 ```html
@@ -17,5 +19,6 @@ angular.module('yourapp', ['nameValidation']);
   </div>
 </form>
 ```
+
 
 if invalid, the `fullname` key will be added to the `$error` object on the `ngModel`
